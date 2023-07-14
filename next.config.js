@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack: config => {
+  images: {
+    domains: ["i.scdn.co", "images.pexels.com", "i.ibb.co"],
+  },
+  webpack: (config) => {
     config.resolve.fallback = { fs: false, net: false, tls: false };
+
     return config;
   },
 };
