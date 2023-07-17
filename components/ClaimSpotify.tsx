@@ -11,8 +11,8 @@ import { motion } from "framer-motion";
 import axios from "axios";
 function ClaimSpotify() {
   const { userID, userName, userDiD, userAddress } = useStore(useUserStore);
-  const CLIENT_ID = "667f72e2373f4b148b2bf508eb8d7dfd";
-  const REDIRECT_URI = "http://localhost:3000";
+  const CLIENT_ID = "c27e1a8f9c064f60badd65f4d4f62df6";
+  const REDIRECT_URI = "https://spotify-disco-wrapped.vercel.app/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SCOPE = "user-top-read";

@@ -1,4 +1,4 @@
-import { Button, HStack, Text, Icon } from "@chakra-ui/react";
+import { Button, HStack, Text, Icon, Image } from "@chakra-ui/react";
 import { BsTelegram } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { MdOutlineContentCopy } from "react-icons/md";
@@ -82,6 +82,34 @@ const MirrorSuccessActionButtons = ({ originalPost }: any) => {
               src="https://platform.twitter.com/widgets.js"
               charSet="utf-8"
             ></script>
+          </HStack>
+        </Button>
+      </motion.div>
+      <motion.div
+        style={{ width: "90px" }}
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <Button
+          h="45px"
+          alignSelf={"center"}
+          colorScheme={"green"}
+          borderRadius="20px"
+          m="0.5rem"
+          boxShadow={"md"}
+        >
+          <HStack>
+            <Image
+              src="https://files.readme.io/a0959e6-lens-logo1.svg"
+              height="40px"
+              width="40px"
+            />
+            <a
+              href={`https://lenster.xyz/?text=I%20just%20claimed%20my%20first%20favorite%20artist%20verifiable%20credential%20on%20Disco!&url=https://spotify-disco-wrapped.vercel.app&via=discoxyz`}
+              target={"_blank"}
+            >
+              Share on Lens
+            </a>
           </HStack>
         </Button>
       </motion.div>
