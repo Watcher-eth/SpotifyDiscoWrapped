@@ -23,7 +23,7 @@ const MobilePage: NextPage = () => {
   //     let token = urlParams.get('access_token');
   // }
   const screenWidth = useScreenWidth();
-  console.log(screenWidth);
+
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -80,6 +80,7 @@ const MobilePage: NextPage = () => {
             src="https://images.pexels.com/photos/558478/pexels-photo-558478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           />
         )}
+
         {token && screenWidth > 750 && <TopArtists />}
         {token && screenWidth > 750 && <TopSongs />}
         {token && screenWidth < 750 && <TopArtistsSmall />}

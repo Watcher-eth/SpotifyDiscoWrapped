@@ -14,6 +14,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalOverlay,
+  SimpleGrid,
   Spacer,
   Spinner,
   Text,
@@ -32,7 +33,7 @@ import { toast } from "react-hot-toast";
 import { useUserStore } from "../context/UserStore";
 import { useStore } from "zustand";
 
-function TopSongs() {
+function TopSongsSmall() {
   const [token, setToken] = useState("");
   const [songs, setSongs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -201,15 +202,9 @@ function TopSongs() {
   };
 
   return (
-    <Flex direction={"column"}>
+    <Flex direction={"column"} background={"black"} paddingBottom="2rem">
       {token && (
-        <Grid
-          h="900px"
-          padding={"1rem"}
-          templateRows="repeat(4, 3fr)"
-          templateColumns={{ base: "1fr", md: "repeat(5, 3fr)" }}
-          gap={4}
-        >
+        <SimpleGrid padding={"1rem"} columns={[1, 1, 2]} gap={4}>
           <GridItem
             borderRadius={"10px"}
             rowSpan={3}
@@ -219,6 +214,8 @@ function TopSongs() {
                 "radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%)",
               color: "white",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              height: "70vh",
+              minWidth: "90vw",
             }}
           >
             {" "}
@@ -228,7 +225,7 @@ function TopSongs() {
               style={{ flexGrow: 1 }}
             >
               <Flex direction={"column"} padding={"2rem"}>
-                <Flex alignItems={"center"} paddingBottom={"3rem"}>
+                <Flex alignItems={"center"} paddingBottom={"5rem"}>
                   <Icon as={BsSpotify} color={"white"} boxSize={35} />
                   <Text
                     marginLeft={"0.5rem"}
@@ -241,15 +238,15 @@ function TopSongs() {
                   </Text>
                 </Flex>
                 <Text
-                  fontSize={["75px", "85px", "90px", "95px"]}
-                  lineHeight={"90px"}
+                  fontSize={["43px", "48px"]}
+                  lineHeight={"64px"}
                   fontWeight={"bold"}
                 >
-                  Your favorite Songs, owned by you
+                  Take your favorite Songs, wherever you go
                 </Text>
                 <Flex
                   direction={"row"}
-                  paddingTop={"7rem"}
+                  paddingTop={"7.5rem"}
                   alignItems={"center"}
                 >
                   <Button onClick={sendProfileArtistRequest}>
@@ -262,7 +259,6 @@ function TopSongs() {
                       color={"white"}
                       alignSelf={"center"}
                       fontWeight={"bold"}
-                      opacity={[0, 0, 0, 1]}
                       marginRight={"0.5rem"}
                     >
                       Powered by
@@ -279,7 +275,11 @@ function TopSongs() {
             colSpan={2}
             bg="papayawhip"
             position={"relative"}
-            sx={{ boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;" }}
+            sx={{
+              boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              minWidth: "93vw",
+              minH: "40vh",
+            }}
           >
             {" "}
             <Flex>
@@ -316,13 +316,13 @@ function TopSongs() {
                       OnArtistClick(songs[0].name, songs[0].album.images[0].url)
                     }
                   >
-                    <Text fontSize={"33px"} fontWeight={"bold"} color="white">
+                    <Text fontSize={"26px"} fontWeight={"bold"} color="white">
                       {songs[0].name}
                     </Text>{" "}
                   </motion.div>
                   <Text
                     marginTop={"-5px"}
-                    fontSize={"25px"}
+                    fontSize={"21px"}
                     fontWeight={"bold"}
                     color="gray.200"
                   >
@@ -344,12 +344,14 @@ function TopSongs() {
               alignItems: "center",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
               position: "relative",
+              minWidth: "90vw",
+              minHeight: "40vh",
             }}
           >
             <motion.div
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              style={{ flexGrow: 1 }}
+              style={{ flexGrow: 1, alignItems: "center" }}
               onClick={() =>
                 OnArtistClick(songs[1].name, songs[1].album.images[0].url)
               }
@@ -358,12 +360,12 @@ function TopSongs() {
                 <div
                   style={{
                     position: "absolute",
-                    width: "100%",
+
                     top: 0,
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    height: "100%",
+                    height: "39vh",
                     borderRadius: "10px",
                     zIndex: 0,
                     filter: "blur(10px)",
@@ -378,82 +380,59 @@ function TopSongs() {
                   />
                 </div>
               )}
-              {songs.length && (
-                <Flex
-                  alignItems={"center"}
-                  alignSelf={"center"}
-                  padding={"2.8rem 2rem 2rem 2rem"}
-                  justify={"center"}
-                >
-                  <HStack spacing={0}>
-                    <Image
-                      src={songs[1].album.images[0].url}
-                      height={230}
-                      width={230}
-                      style={{ borderRadius: "10px", zIndex: 3 }}
-                    />
-                    <Image
-                      src={songs[2].album.images[0].url}
-                      height={185}
-                      width={185}
-                      style={{
-                        borderRadius: "10px",
-                        zIndex: 2,
-                        position: "relative",
-                        left: -158,
-                      }}
-                    />
-                    <Image
-                      src={songs[0].album.images[0].url}
-                      height={165}
-                      width={165}
-                      style={{
-                        borderRadius: "10px",
-                        zIndex: 1,
-                        position: "relative",
-                        left: -300,
-                      }}
-                    />
-                  </HStack>
+              <Center paddingTop={["5rem", "3rem"]}>
+                {songs.length && (
+                  <Flex
+                    alignItems={"center"}
+                    alignSelf={"center"}
+                    padding={"1rem"}
+                    justify={"center"}
+                    position={"relative"}
+                  >
+                    <HStack spacing={0} paddingLeft={"0.5rem"}>
+                      <Image
+                        src={songs[1].album.images[0].url}
+                        height={230}
+                        width={230}
+                        style={{ borderRadius: "10px", zIndex: 3 }}
+                      />
+                    </HStack>
 
-                  <Flex direction={"column"} zIndex={1}>
-                    <Flex direction={"row"} paddingBottom="1rem">
+                    <Flex
+                      direction={"column"}
+                      paddingLeft={"0.9rem"}
+                      zIndex={1}
+                      alignSelf={"center"}
+                    >
+                      <Flex direction={"row"}>
+                        <Text
+                          fontSize={"18px"}
+                          fontWeight={"semibold"}
+                          color={"gray.300"}
+                        >
+                          In the last month
+                        </Text>
+                      </Flex>
                       <Text
-                        fontSize={"20px"}
-                        fontWeight={"semibold"}
-                        color={"gray.300"}
+                        paddingBottom={"0.5rem"}
+                        fontSize={"22px"}
+                        fontWeight={"extrabold"}
+                        color={"white"}
                       >
-                        In the last month
+                        You have been listening a lot to {songs[1].name}
                       </Text>
+
+                      <motion.div
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.98 }}
+                        style={{ flexGrow: 1 }}
+                      >
+                        <Button flexGrow={1}>Claim Credential</Button>
+                      </motion.div>
                     </Flex>
-                    <Text
-                      fontSize={"27px"}
-                      fontWeight={"extrabold"}
-                      color={"white"}
-                    >
-                      You have been listening a lot to
-                    </Text>
-                    <Text
-                      fontSize={"27px"}
-                      paddingBottom="0.7rem"
-                      fontWeight={"extrabold"}
-                      color={"white"}
-                      maxW={"87%"}
-                    >
-                      {songs[1].name}
-                    </Text>
-                    <motion.div
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.98 }}
-                      style={{ flexGrow: 1 }}
-                    >
-                      <Button flexGrow={1} width={"380px"}>
-                        Claim Credential
-                      </Button>
-                    </motion.div>
                   </Flex>
-                </Flex>
-              )}
+                )}
+              </Center>
             </motion.div>
           </GridItem>
 
@@ -466,6 +445,8 @@ function TopSongs() {
                 "radial-gradient(circle at 10% 20%, rgb(90, 92, 106) 0%, rgb(32, 45, 58) 81.3%)",
               color: "white",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              minWidth: "93vw",
+              minHeight: "40vh ",
             }}
           >
             {" "}
@@ -564,7 +545,7 @@ function TopSongs() {
               </Flex>
             )}
           </GridItem>
-        </Grid>
+        </SimpleGrid>
       )}
       <Modal
         isOpen={isOpen}
@@ -575,14 +556,10 @@ function TopSongs() {
       >
         <ModalOverlay backdropFilter="blur(12px)" />
         <ModalContent
-          maxW={["93vw", "90vw", "60vw", "45vw"]}
+          maxW={["95vw", "90vw", "60vw", "45vw"]}
           position={"relative"}
-          height={
-            status === "success"
-              ? "-moz-min-content"
-              : ["93vw", "90vw", "60vw", "45vw"]
-          }
           borderRadius={"10px"}
+          minH={"64vh"}
         >
           {status === "preClaim" && (
             <div>
@@ -622,14 +599,14 @@ function TopSongs() {
                 </Flex>
 
                 <Text
-                  fontSize={["70px", "75px", "80px", "95px"]}
+                  fontSize={["60px", "75px", "80px", "95px"]}
                   lineHeight={"90px"}
                   fontWeight={"bold"}
                   zIndex={2}
                   position={"relative"}
                   color={"white"}
                   noOfLines={1}
-                  top={["150px", "180px", "220px", "368px"]}
+                  top={["110px", "130px", "220px", "368px"]}
                 >
                   {artistName && artistName}
                 </Text>
@@ -638,7 +615,7 @@ function TopSongs() {
                   alignItems={"center"}
                   zIndex={2}
                   position={"relative"}
-                  top={["150px", "180px", "220px", "388px"]}
+                  top={["105px", "130px", "220px", "388px"]}
                   paddingLeft={"0.rem"}
                 >
                   <motion.div
@@ -648,7 +625,7 @@ function TopSongs() {
                     <Button
                       height={"45px"}
                       width={"270px"}
-                      onClick={sendTopSongsVCRequest}
+                      onClick={sendProfileArtistRequest}
                     >
                       Claim your Credential
                     </Button>
@@ -676,10 +653,7 @@ function TopSongs() {
             </div>
           )}
           {status === "loading" && (
-            <Center
-              padding={"5rem 5rem"}
-              height={["83vw", "80vw", "50vw", "35vw"]}
-            >
+            <Center padding={"1rem"} height={["83vw", "80vw", "50vw", "35vw"]}>
               <Flex
                 direction={"column"}
                 alignItems={"center"}
@@ -710,15 +684,21 @@ function TopSongs() {
                   Succesfully Claimed
                 </Text>
               </HStack>
-              <Text fontSize={"19px"} color={"gray.600"} alignSelf={"center"}>
+              <Text
+                fontSize={"17px"}
+                maxW={"75vw"}
+                textAlign={"center"}
+                color={"gray.600"}
+                alignSelf={"center"}
+              >
                 Share your favorite songs with your friends and show off your
                 new credentials.{" "}
               </Text>
-              <Center p={"1rem 0.5rem 1rem 0.5rem"}>
+              <Center p={"1rem 1rem 1rem 1rem"}>
                 <Image
                   src="https://i.ibb.co/dQ2pKKh/credentialprinter.gif"
-                  height={500}
-                  width={800}
+                  height={450}
+                  width={500}
                   style={{ borderRadius: "5px" }}
                 />
               </Center>
@@ -732,4 +712,4 @@ function TopSongs() {
   );
 }
 
-export default TopSongs;
+export default TopSongsSmall;

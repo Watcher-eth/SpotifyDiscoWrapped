@@ -86,7 +86,7 @@ const MirrorSuccessActionButtons = ({ originalPost }: any) => {
         </Button>
       </motion.div>
       <motion.div
-        style={{ width: "90px" }}
+        style={{}}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -114,7 +114,7 @@ const MirrorSuccessActionButtons = ({ originalPost }: any) => {
         </Button>
       </motion.div>
       <motion.div
-        style={{ marginLeft: "-12px" }}
+        style={{ marginLeft: "-28px" }}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.98 }}
       >

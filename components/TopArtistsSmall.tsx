@@ -12,6 +12,7 @@ import {
   Modal,
   ModalContent,
   ModalOverlay,
+  SimpleGrid,
   Spacer,
   Spinner,
   Text,
@@ -32,7 +33,7 @@ import { useAccount } from "wagmi";
 import { toast } from "react-hot-toast";
 import { useStore } from "zustand";
 
-function TopSongs() {
+function TopArtistsSmall() {
   const [token, setToken] = useState("");
   const [songs, setSongs] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -182,23 +183,17 @@ function TopSongs() {
   };
 
   return (
-    <Flex direction={"column"}>
+    <Flex direction={"column"} background={"black"} padding={"1rem 0 0rem 0"}>
       {token && (
-        <Grid
-          h="700px"
-          padding={"1rem 1rem 0 1rem"}
-          templateRows="repeat(2, 3fr)"
-          templateColumns={{ base: "1fr", md: "repeat(4, 3fr)" }}
-          gap={4}
-        >
+        <SimpleGrid padding={"1rem 1rem 0 1rem"} columns={[1, 1, 2]} gap={4}>
           <GridItem
             borderRadius={"10px"}
-            rowSpan={2}
-            colSpan={2}
             sx={{
               background: "linear-gradient(to right, #000000, #434343)",
               color: "white",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              minH: "47vh",
+              minW: "90vw",
             }}
             position={"relative"}
           >
@@ -210,11 +205,7 @@ function TopSongs() {
                   style={{ borderRadius: "10px", zIndex: 0 }}
                 />
               )}
-              <Flex
-                direction={"column"}
-                padding={["0.5rem", "0.5rem", "1rem", "2rem"]}
-                zIndex={2}
-              >
+              <Flex direction={"column"} padding={["0.8rem"]} zIndex={2}>
                 <Box
                   background={
                     " linear-gradient(to bottom, transparent,transparent, black);"
@@ -226,11 +217,14 @@ function TopSongs() {
                   bottom={"0"}
                   borderRadius={"5px"}
                 />
-                <Flex alignItems={"center"} paddingBottom={"3rem"} zIndex={2}>
+                <Flex
+                  alignItems={"center"}
+                  paddingBottom={"11.5rem"}
+                  zIndex={2}
+                >
                   <Text
                     marginLeft={"0.5rem"}
                     fontSize={"28px"}
-                    lineHeight={"90px"}
                     color={"white"}
                     fontWeight={"bold"}
                   >
@@ -239,14 +233,13 @@ function TopSongs() {
                 </Flex>
 
                 <Text
-                  fontSize={["70px", "75px", "80px", "95px"]}
+                  fontSize={["60px"]}
                   lineHeight={"90px"}
                   fontWeight={"bold"}
                   zIndex={2}
                   position={"relative"}
                   color={"white"}
                   noOfLines={1}
-                  top={["130px", "130px", "328px", "328px"]}
                 >
                   {songs.length && songs[0].name}
                 </Text>
@@ -255,7 +248,6 @@ function TopSongs() {
                   alignItems={"center"}
                   zIndex={2}
                   position={"relative"}
-                  top={["130px", "120px", "345px", "345px"]}
                   paddingLeft={"0.rem"}
                 >
                   <motion.div
@@ -294,8 +286,6 @@ function TopSongs() {
           </GridItem>
           <GridItem
             borderRadius={"10px"}
-            rowSpan={1}
-            colSpan={2}
             bg="papayawhip"
             position={"relative"}
             sx={{
@@ -303,19 +293,28 @@ function TopSongs() {
               color: "white",
               alignItems: "center",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              minH: "40vh",
+              minW: "90vw",
             }}
           >
-            <Flex direction={"column"} padding={"2.5rem"}>
-              <Text fontSize={"22px"} fontWeight={"bold"} color={"gray.300"}>
+            <Flex direction={"column"} padding={"1rem"}>
+              <Text
+                paddingTop={"0.2rem"}
+                fontSize={"22px"}
+                fontWeight={"bold"}
+                color={"gray.300"}
+              >
                 Verifiable Credentials 101
               </Text>
-              <Text fontSize={"32px"} fontWeight={"bold"} color={"white"}>
+              <Text fontSize={"26px"} fontWeight={"bold"} color={"white"}>
                 What is a Verifiable Credential?
               </Text>
               <Text
-                fontSize={"18px"}
+                fontSize={"17.5px"}
                 fontWeight={"semibold"}
                 color={"gray.200"}
+                paddingTop={"0.3rem"}
+                width={"100.5%"}
               >
                 Verifiable credentials are specially formatted data that you can
                 put on your Disco profile. Think of them like a digital version
@@ -339,16 +338,22 @@ function TopSongs() {
               color: "white",
               alignItems: "center",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              minH: "40vh",
+              minW: "90vw",
             }}
           >
             {songs.length && (
-              <Flex
-                alignItems={"center"}
-                alignSelf={"center"}
-                padding={"2rem 2rem 2rem 2rem"}
-              >
-                <Flex direction={"column"} alignSelf={"center"}>
-                  <Flex direction={"row"} paddingBottom="1.rem">
+              <Flex alignItems={"center"} alignSelf={"center"}>
+                <Flex
+                  direction={"column"}
+                  alignSelf={"center"}
+                  paddingLeft="0.5rem"
+                >
+                  <Flex
+                    direction={"row"}
+                    paddingBottom="0.2rem"
+                    paddingTop={"2rem"}
+                  >
                     <Text
                       fontSize={"20px"}
                       fontWeight={"semibold"}
@@ -358,8 +363,8 @@ function TopSongs() {
                     </Text>
                   </Flex>
                   <Text
-                    fontSize={"27px"}
-                    paddingBottom="0.7rem"
+                    fontSize={"24px"}
+                    paddingBottom="2rem"
                     fontWeight={"extrabold"}
                     color={"white"}
                     width={"max-content"}
@@ -379,6 +384,7 @@ function TopSongs() {
                         borderRadius={"10px"}
                         bg="linear-gradient(to right, #232526, #414345)"
                         boxShadow={"base"}
+                        alignSelf={"center"}
                       >
                         <Image
                           src={songs[1].images[0].url}
@@ -415,6 +421,8 @@ function TopSongs() {
               background: "linear-gradient(to right, #e6dada, #274046)",
               color: "white",
               boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+              minH: "40vh",
+              minW: "90vw",
             }}
           >
             {" "}
@@ -492,7 +500,7 @@ function TopSongs() {
               )}
             </motion.div>
           </GridItem>
-        </Grid>
+        </SimpleGrid>
       )}
       <Modal
         isOpen={isOpen}
@@ -550,14 +558,14 @@ function TopSongs() {
                 </Flex>
 
                 <Text
-                  fontSize={["70px", "75px", "80px", "95px"]}
+                  fontSize={["60px", "75px", "80px", "95px"]}
                   lineHeight={"90px"}
                   fontWeight={"bold"}
                   zIndex={2}
                   position={"relative"}
                   color={"white"}
                   noOfLines={1}
-                  top={["150px", "180px", "220px", "368px"]}
+                  top={["110px", "130px", "220px", "368px"]}
                 >
                   {artistName && artistName}
                 </Text>
@@ -566,7 +574,7 @@ function TopSongs() {
                   alignItems={"center"}
                   zIndex={2}
                   position={"relative"}
-                  top={["150px", "180px", "220px", "388px"]}
+                  top={["105px", "130px", "220px", "388px"]}
                   paddingLeft={"0.rem"}
                 >
                   <motion.div
@@ -646,7 +654,7 @@ function TopSongs() {
                 <Image
                   src="https://i.ibb.co/dQ2pKKh/credentialprinter.gif"
                   height={500}
-                  width={800}
+                  width={400}
                   style={{ borderRadius: "5px" }}
                 />
               </Center>
@@ -660,4 +668,4 @@ function TopSongs() {
   );
 }
 
-export default TopSongs;
+export default TopArtistsSmall;
