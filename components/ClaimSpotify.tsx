@@ -12,7 +12,7 @@ import axios from "axios";
 function ClaimSpotify() {
   const { userID, userName, userDiD, userAddress } = useStore(useUserStore);
   const CLIENT_ID = "c27e1a8f9c064f60badd65f4d4f62df6";
-  const REDIRECT_URI = "https://spotify-disco-wrapped.vercel.app";
+  const REDIRECT_URI = "https://spotify-disco-wrapped.vercel.app/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SCOPE = "user-top-read";
