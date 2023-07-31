@@ -6,12 +6,8 @@ import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 const MirrorSuccessActionButtons = ({ originalPost }: any) => {
   const mirrorUrl = `vercel.com}`;
-  const isPost = originalPost?.__typename === "Post";
-  const musicianProfile = isPost
-    ? originalPost?.profile
-    : originalPost?.mirrorOf?.profile;
 
-  const shareText = `I just claimed my ${originalPost?.metadata?.name} credential! Now I can proof that im the biggest fan of 🎶✨`;
+  const shareText = `I just claimed my first Spotify Verifiable Credential using Disco! 🪩✨`;
 
   const handleCopyClick = async () => {
     try {
@@ -24,9 +20,7 @@ const MirrorSuccessActionButtons = ({ originalPost }: any) => {
 
   const handleTelegramShare = () => {
     const text = encodeURIComponent(`${shareText}`);
-    const shareUrl = `https://t.me/share/url?text=${text}&url=${encodeURIComponent(
-      mirrorUrl
-    )}`;
+    const shareUrl = `https://t.me/share/url?text=${text}&url=https://spotify-disco-wrapped.vercel.app`;
     window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -70,8 +64,8 @@ const MirrorSuccessActionButtons = ({ originalPost }: any) => {
               target="_blank"
               rel="noreferrer"
               className="twitter-share-button"
-              data-text="I just mirrored this post on Riff"
-              data-url={`${mirrorUrl}/post/`}
+              data-text="I just claimed my first Spotify Verifiable Credential using Disco! 🪩"
+              data-url={`https://spotify-disco-wrapped.vercel.app`}
               data-via="riffxyz"
               data-show-count="false"
             >
@@ -105,7 +99,7 @@ const MirrorSuccessActionButtons = ({ originalPost }: any) => {
               width="40px"
             />
             <a
-              href={`https://lenster.xyz/?text=I%20just%20claimed%20my%20first%20favorite%20artist%20verifiable%20credential%20on%20Disco!&url=https://spotify-disco-wrapped.vercel.app&via=discoxyz`}
+              href={`https://lenster.xyz/?text=I%20just%20claimed%20my%20first%20Spotify%20verifiable%20credential%20using%20Disco!%20🪩&url=https://spotify-disco-wrapped.vercel.app&via=discoxyz`}
               target={"_blank"}
             >
               Share on Lens
